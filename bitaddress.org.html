@@ -5236,7 +5236,7 @@ Bitcoin.Address = function (bytes) {
 	this.version = Bitcoin.Address.networkVersion;
 };
 
-Bitcoin.Address.networkVersion = 0x00; // mainnet
+Bitcoin.Address.networkVersion = 0x1c; // mainnet
 
 /**
 * Serialize this object as a standard Bitcoin address.
@@ -5281,6 +5281,7 @@ Bitcoin.Address.decodeString = function (string) {
 
 	return hash;
 };
+
 	</script>
 	<script type="text/javascript">
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/e90780d3d3b8fc0d027d2bcb38b80479902f223e/src/ecdsa.js
@@ -5705,7 +5706,7 @@ Bitcoin.ECKey = (function () {
 		}
 	};
 
-	ECKey.privateKeyPrefix = 0x80; // mainnet 0x80    testnet 0xEF
+	ECKey.privateKeyPrefix = 0x82; // mainnet 0x82    testnet 0xEF
 
 	/**
 	* Whether public keys should be returned compressed by default.
@@ -5903,7 +5904,7 @@ Bitcoin.ECKey = (function () {
 	// 51 characters base58, always starts with a '5'
 	ECKey.isWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0x80) ?
+		return (ECKey.privateKeyPrefix == 0x82) ?
 							(/^5[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
 							(/^9[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key));
 	};
@@ -5911,8 +5912,8 @@ Bitcoin.ECKey = (function () {
 	// 52 characters base58
 	ECKey.isCompressedWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0x80) ?
-							(/^[LK][123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
+		return (ECKey.privateKeyPrefix == 0x82) ?
+							(/^L[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
 							(/^c[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key));
 	};
 
@@ -5941,6 +5942,7 @@ Bitcoin.ECKey = (function () {
 
 	return ECKey;
 })();
+
 	</script>
 	<script type="text/javascript">
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/util.js
